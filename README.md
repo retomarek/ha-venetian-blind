@@ -19,7 +19,7 @@ This uses a custom cover controller. Similar to the time based cover, but with a
 external_components:
   - source:
       type: git
-      url: https://github.com/bruxy70/Venetian-Blinds-Control
+      url: https://github.com/retomarek/ha-venetian-blind
       ref: master
     components: [venetian_blinds]
 ```
