@@ -92,6 +92,7 @@ void VenetianBlinds::loop() {
         if(relative_pos == 0 && relative_tilt == 0) {
             if(relative_tilt_after != 0) {
                 relative_tilt = relative_tilt_after;
+                relative_tilt_after = 0;
             }
             else {
                 this->stop_trigger->trigger();
@@ -125,6 +126,7 @@ void VenetianBlinds::loop() {
         if(relative_pos == 0 && relative_tilt == 0) {
             if(relative_tilt_after != 0) {
                 relative_tilt = relative_tilt_after;
+                relative_tilt_after = 0;
             }
             else {
                 this->stop_trigger->trigger();
