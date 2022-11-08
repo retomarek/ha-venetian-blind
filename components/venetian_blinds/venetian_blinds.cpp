@@ -52,7 +52,7 @@ void VenetianBlinds::control(const CoverCall &call) {
             relative_tilt = -1 * (100.0 - exact_tilt);   
         }
         else {
-            relative_tilt = 0
+            relative_tilt = 0;
         }
         last_position_update = millis();
     }
