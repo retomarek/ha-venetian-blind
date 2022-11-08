@@ -50,7 +50,7 @@ void VenetianBlinds::control(const CoverCall &call) {
             relative_tilt_after = 100.0 - exact_tilt;
         }
         else if (relative_pos < 0) {
-            relative_tilt_after = exact_tilt - 100.0;   
+            relative_tilt_after = -1 * exact_tilt;   
         }
         else {
             relative_tilt_after = 0;
