@@ -45,7 +45,15 @@ void VenetianBlinds::control(const CoverCall &call) {
     if (call.get_position().has_value()) {
         int new_pos = *call.get_position()*100;
         relative_pos = exact_pos - new_pos;
-        relative_tilt = exact_tilt;
+        if (relative_pos < 0) {
+            relative_tilt = exact_tilt;
+        }
+        else if (relative_pos > 0) {
+            relative_tilt = -1 * (100.0 - exact_tilt);   
+        }
+        else {
+            relative_tilt = 0
+        }
         last_position_update = millis();
     }
     if (call.get_stop()) {
