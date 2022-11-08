@@ -69,15 +69,15 @@ void VenetianBlinds::control(const CoverCall &call) {
 }
 void VenetianBlinds::loop() {
     uint32_t current_time = millis();
-    if(relative_pos > 0 || relative_tilt > 0) {
+    if(relative_pos > 0 || relative_tilt < 0) {
         if(this->current_action != COVER_OPERATION_CLOSING) {
             this->close_trigger->trigger();
             this->current_action = COVER_OPERATION_CLOSING;
         }
         if(current_time - last_tilt_update >= (this->tilt_duration / 100)) {
             last_tilt_update = current_time;
-            relative_tilt=clamp(relative_tilt-1,0,100);
-            exact_tilt=clamp(exact_tilt-1,0,100);
+            relative_tilt=clamp(relative_tilt+1,-100,0);
+            exact_tilt=clamp(exact_tilt+1,0,100);
         }
         if(current_time - last_position_update >= (this->open_duration / 100)) {
             last_position_update = current_time;
@@ -101,15 +101,15 @@ void VenetianBlinds::loop() {
             }
         }
     } 
-    else if(relative_pos < 0 || relative_tilt < 0) {
+    else if(relative_pos < 0 || relative_tilt > 0) {
         if(this->current_action != COVER_OPERATION_OPENING) {
             this->open_trigger->trigger();
             this->current_action = COVER_OPERATION_OPENING;
         }
         if(current_time - last_tilt_update >= (this->tilt_duration / 100)) {
             last_tilt_update = current_time;
-            relative_tilt=clamp(relative_tilt+1,0,100);
-            exact_tilt=clamp(exact_tilt+1,0,100);
+            relative_tilt=clamp(relative_tilt-1,0,100);
+            exact_tilt=clamp(exact_tilt-1,0,100);
         }
         if(current_time - last_position_update >= (this->close_duration / 100)) {
             last_position_update = current_time;
