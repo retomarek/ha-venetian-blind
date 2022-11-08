@@ -25,6 +25,7 @@ class VenetianBlinds : public Component, public cover::Cover {
     uint32_t last_tilt_update{0};
     int exact_pos;
     int relative_pos{0};
+    int relative_pos_after{0};
     int exact_tilt;
     int relative_tilt{0};
     cover::CoverOperation current_action{cover::COVER_OPERATION_IDLE};
