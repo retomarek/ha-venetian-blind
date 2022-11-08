@@ -90,11 +90,16 @@ void VenetianBlinds::loop() {
             }
         }
         if(relative_pos == 0 && relative_tilt == 0) {
-            this->stop_trigger->trigger();
-            this->current_action = COVER_OPERATION_IDLE;
-            this->position = exact_pos/100.0;
-            this->tilt = exact_tilt/100.0;
-            this->publish_state();
+            if(relative_tilt_after != 0) {
+                relative_tilt = relative_tilt_after;
+            }
+            else {
+                this->stop_trigger->trigger();
+                this->current_action = COVER_OPERATION_IDLE;
+                this->position = exact_pos/100.0;
+                this->tilt = exact_tilt/100.0;
+                this->publish_state();
+            }
         }
     } 
     else if(relative_pos < 0 || relative_tilt > 0) {
@@ -118,11 +123,16 @@ void VenetianBlinds::loop() {
             }
         }
         if(relative_pos == 0 && relative_tilt == 0) {
-            this->stop_trigger->trigger();
-            this->current_action = COVER_OPERATION_IDLE;
-            this->position = exact_pos/100.0;
-            this->tilt = exact_tilt/100.0;
-            this->publish_state();
+            if(relative_tilt_after != 0) {
+                relative_tilt = relative_tilt_after;
+            }
+            else {
+                this->stop_trigger->trigger();
+                this->current_action = COVER_OPERATION_IDLE;
+                this->position = exact_pos/100.0;
+                this->tilt = exact_tilt/100.0;
+                this->publish_state();
+            }
         }
     }
 };
