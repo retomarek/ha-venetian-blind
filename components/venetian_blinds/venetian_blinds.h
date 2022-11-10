@@ -23,6 +23,8 @@ class VenetianBlinds : public Component, public cover::Cover {
   private:
     uint32_t last_position_update{0};
     uint32_t last_tilt_update{0};
+    uint32_t last_movement_close{0};
+    uint32_t last_movement_open{0};
     int exact_pos;
     int relative_pos{0};
     int exact_tilt;
